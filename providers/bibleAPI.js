@@ -1,5 +1,12 @@
+
 const verseRequest = async (verseParams) => {
-    const response = await fetch('http://labs.bible.org/api/?passage=John%203:16');
+
+    const response = await fetch(`https://api.esv.org/v3/passage/text/?q=${verseParams}&include-passage-references=true&include-first-verse-numbers=true`, {
+        method: 'GET',
+        headers: {
+            'Authorization': config.api_auth
+        }
+    })
     const json = await response.json();
     console.log(json);
 }

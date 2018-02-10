@@ -230,4 +230,6 @@ If this causes problems for you, you may want to try changing your terminal's co
 * Set node default: `nvm alias default 6.12.3`
 * Find details: `nvm ls`
 * Creating app with creative: `create-react-native-app appName`
+* [Bible-API](http://bible-api.com/)
+
 

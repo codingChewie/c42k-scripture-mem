@@ -14,7 +14,8 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      translation: '',
+  /*Commenting out translation box for future use.
+      translation: '',*/
       book: '',
       chapter: '',
       verse: '',
@@ -34,7 +35,8 @@ export default class App extends React.Component {
   render() {
 
     const inputs = [
-      { placeholder: "Translation", name: "translation" },
+      /*Commenting out translation box for future use
+     { placeholder: "Translation", name: "translation" },*/
       { placeholder: "Book", name: "book" },
       { placeholder: "Chapter", name: "chapter" },
       { placeholder: "Verse", name: "verse" },

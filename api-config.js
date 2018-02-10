@@ -1,6 +1,6 @@
 config = {
 
-    api_auth: 'KEYHERE'
+    api_auth: 'Token KEYHERE'
 
 }
 

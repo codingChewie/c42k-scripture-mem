@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, TextInput, View } from 'react-native';
 import { Header, Input, Button } from 'react-native-elements';
+
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import mountain from './img/mountain.jpg';
@@ -17,7 +18,7 @@ export default class App extends React.Component {
     };
   }
 
-  searchForVerse = () => {
+  makeVerseQuery = () => {
     let search = `${this.state.book} ${this.state.chapter} : ${this.state.verse}, ${this.state.translation}`;
     this.setState({ query: search });
   }
@@ -39,42 +40,16 @@ export default class App extends React.Component {
           rightComponent={{ icon: 'home', color: '#fff' }}
           outerContainerStyles={{ width: '100%' }}
         />
-        <View style={{ flex: 3, backgroundColor: 'skyblue' }}>
 
-
+        <View style={styles.inputs}>
           {inputs.map((input, index) =>
             <TextInput
+              key={input.name}
               style={{ height: 40 }}
               placeholder={input.placeholder}
               onChangeText={(text) => this.setState({ [input.name]: text })}
             />
           )}
-
-          {/* <TextInput
-            style={{ height: 40 }}
-            placeholder="Translation"
-            onChangeText={(text) => this.setState({ translation: text })}
-          />
-
-          <TextInput
-            style={{ height: 40 }}
-            placeholder="Book"
-            onChangeText={(text) => {
-              this.setState({ book: text });
-            }}
-          />
-
-          <TextInput
-            style={{ height: 40 }}
-            placeholder="Chapter"
-            onChangeText={(text) => this.setState({ chapter: text })}
-          />
-
-          <TextInput
-            style={{ height: 40 }}
-            placeholder="Verse"
-            onChangeText={(text) => this.setState({ verse: text })}
-          /> */}
 
           <Button
             text='Search'
@@ -86,12 +61,13 @@ export default class App extends React.Component {
               borderWidth: 0,
               borderRadius: 5
             }}
-            onPress={this.searchForVerse}
+            onPress={this.makeVerseQuery}
           />
 
           <Text style={{ padding: 10, fontSize: 42 }}>
             {this.state.query}
           </Text>
+
         </View>
       </View>
     );
@@ -104,5 +80,12 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  inputs:{
+    flex: 3,
+    backgroundColor: 'skyblue',
+    flexDirection: 'column',
+    flexWrap: 'wrap',
+    justifyContent: 'space-around'
   }
 });

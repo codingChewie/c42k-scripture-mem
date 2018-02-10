@@ -6,7 +6,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import mountain from './img/mountain.jpg';
 
-import config from './config';
+import config from './api-config';
 import verseRequest from './providers/bibleAPI.js';
 
 

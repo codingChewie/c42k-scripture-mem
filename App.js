@@ -6,7 +6,9 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import mountain from './img/mountain.jpg';
 
+import config from './config';
 import verseRequest from './providers/bibleAPI.js';
+
 
 export default class App extends React.Component {
   constructor(props) {
@@ -22,12 +24,11 @@ export default class App extends React.Component {
 
   makeVerseQuery = () => {
     //let search = `${this.state.book} ${this.state.chapter} : ${this.state.verse}, ${this.state.translation}`;
-    //console.log('search', search);
+    // format search for bible-api.com
     let search = `${this.state.book} ${this.state.chapter}:${this.state.verse}`
     console.log('search', search);
+    console.log('config', config.api_auth);
     this.setState({ query: search }, () => verseRequest(this.state.query));
-    //verseRequest(this.state.query);
-
   }
 
   render() {

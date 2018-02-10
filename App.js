@@ -41,11 +41,11 @@ export default class App extends React.Component {
           outerContainerStyles={{ width: '100%' }}
         />
 
-        <View style={styles.inputs}>
+        <View style={styles.container}>
           {inputs.map((input, index) =>
             <TextInput
               key={input.name}
-              style={{ height: 40 }}
+              style={styles.inputs}
               placeholder={input.placeholder}
               onChangeText={(text) => this.setState({ [input.name]: text })}
             />
@@ -77,15 +77,19 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: '#87ceeb',
     alignItems: 'center',
     justifyContent: 'center',
   },
   inputs:{
     flex: 3,
-    backgroundColor: 'skyblue',
+    width: '75%',
+    borderColor:'#87ceeb',
+    borderWidth: 25,
+    textAlign: 'center',
+    backgroundColor: '#b8dcec',
     flexDirection: 'column',
     flexWrap: 'wrap',
-    justifyContent: 'space-around'
+    justifyContent: 'space-between'
   }
 });

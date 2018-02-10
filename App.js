@@ -23,6 +23,14 @@ export default class App extends React.Component {
   }
 
   render() {
+
+    const inputs = [
+      { placeholder: "Translation", name: "translation" },
+      { placeholder: "Book", name: "book" },
+      { placeholder: "Chapter", name: "chapter" },
+      { placeholder: "Verse", name: "verse" },
+    ];
+
     return (
       <View style={{ flex: 1 }}>
         <Header
@@ -32,7 +40,17 @@ export default class App extends React.Component {
           outerContainerStyles={{ width: '100%' }}
         />
         <View style={{ flex: 3, backgroundColor: 'skyblue' }}>
-          <TextInput
+
+
+          {inputs.map((input, index) =>
+            <TextInput
+              style={{ height: 40 }}
+              placeholder={input.placeholder}
+              onChangeText={(text) => this.setState({ [input.name]: text })}
+            />
+          )}
+
+          {/* <TextInput
             style={{ height: 40 }}
             placeholder="Translation"
             onChangeText={(text) => this.setState({ translation: text })}
@@ -56,7 +74,7 @@ export default class App extends React.Component {
             style={{ height: 40 }}
             placeholder="Verse"
             onChangeText={(text) => this.setState({ verse: text })}
-          />
+          /> */}
 
           <Button
             text='Search'

@@ -223,6 +223,7 @@ If this causes problems for you, you may want to try changing your terminal's co
 ## APIs Experimented:
 * [ESV](https://api.esv.org/)
 * [Labs Bible](http://labs.bible.org/api_web_service): [example](http://labs.bible.org/api/?passage=John%203:16&type=json) 
+* [Bible-API](http://bible-api.com/)
 
 
 ## Terminal issue commands:
@@ -230,6 +231,6 @@ If this causes problems for you, you may want to try changing your terminal's co
 * Set node default: `nvm alias default 6.12.3`
 * Find details: `nvm ls`
 * Creating app with creative: `create-react-native-app appName`
-* [Bible-API](http://bible-api.com/)
+
 
 

@@ -148,18 +148,20 @@ const styles = StyleSheet.create({
    backgroundColor: "#5d67d5",
     flexWrap: 'wrap',
     width: 300,
-    margin: 75,
+    marginVertical: 75,
     height: 15,
     borderColor: "transparent",
     borderWidth: 5,
     borderRadius: 5,
     flexDirection: 'column',
     justifyContent: 'center',
-        alignItems: 'center',
+    alignItems: 'center',
   },
 
   textViewUi:{
-    margin:75
+    marginVertical:75,
+    paddingBottom:50,
+    paddingTop:33
     
   }
 });

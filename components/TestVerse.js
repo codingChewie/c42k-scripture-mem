@@ -20,7 +20,7 @@ export const TestVerse = ({ toggleViewing, queryVerse }) =>
 
         <Button
             title='Back'
-            buttonStyle={styles.buttonsViewU}
+            buttonStyle={styles.buttonsViewUi}
             onPress={toggleViewing}
         />
     </View>;

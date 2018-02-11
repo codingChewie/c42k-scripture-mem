@@ -6,6 +6,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import mountain from './img/mountain.jpg';
 
+import { TestVerse } from './components/TestVerse.js';
+
 import config from './api-config';
 import verseRequest from './providers/bibleAPI.js';
 
@@ -28,16 +30,16 @@ export default class App extends React.Component {
     //let search = `${this.state.book} ${this.state.chapter} : ${this.state.verse}, ${this.state.translation}`;
     // format search for bible-api.com
     let search = `${this.state.book} ${this.state.chapter}:${this.state.verse}`
-    console.log('search', search);
-    console.log('config', config.api_auth);
     this.setState({ query: search }, () => verseRequest(this.state.query));
+  }
+
+  setToViewing = () => {
+    this.setState({ viewing: true });
   }
 
   render() {
 
     const inputs = [
-      /*Commenting out translation box for future use
-     { placeholder: "Translation", name: "translation" },*/
       { placeholder: "Book", name: "book" },
       { placeholder: "Chapter", name: "chapter" },
       { placeholder: "Verse", name: "verse" },
@@ -85,47 +87,9 @@ export default class App extends React.Component {
 
           </View>
         ) : (
-            <View style={styles.container}>
-              <Header
-                leftComponent={{ icon: 'menu', color: '#fff' }}
-                centerComponent={{ text: 'Scripturize', style: { color: '#fff', fontSize: 30 } }}
-                rightComponent={{ icon: 'home', color: '#fff' }}
-                outerContainerStyles={{ width: '100%' }}
-              />
-              <Text>Testing</Text>
-
-              <Button
-                title='Test'
-                buttonStyle={{
-                  backgroundColor: "rgba(92, 99,216, 1)",
-                  width: 300,
-                  height: 45,
-                  borderColor: "transparent",
-                  borderWidth: 0,
-                  borderRadius: 5
-                }}
-                onPress={() => {
-                  console.log("Testing Accuracy!");
-                }
-                }
-              />
-
-              <Button
-                title='Back'
-                buttonStyle={{
-                  backgroundColor: "rgba(92, 99,216, 1)",
-                  width: 300,
-                  height: 45,
-                  borderColor: "transparent",
-                  borderWidth: 0,
-                  borderRadius: 5
-                }}
-                onPress={() => {
-                  this.setState({ viewing: true })
-                }
-                }
-              />
-            </View>
+            <TestVerse
+              toggleViewing={this.setToViewing}
+              queryVerse={this.makeVerseQuery} />
           )}
       </View>
     );

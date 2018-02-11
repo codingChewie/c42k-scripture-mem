@@ -27,8 +27,6 @@ export default class App extends React.Component {
   }
 
   makeVerseQuery = () => {
-    //let search = `${this.state.book} ${this.state.chapter} : ${this.state.verse}, ${this.state.translation}`;
-    // format search for bible-api.com
     let search = `${this.state.book} ${this.state.chapter}:${this.state.verse}`
     this.setState({ query: search }, () => verseRequest(this.state.query));
   }

@@ -14,8 +14,9 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-  /*Commenting out translation box for future use.
-      translation: '',*/
+      /*Commenting out translation box for future use.
+          translation: '',*/
+      viewing: true,
       book: '',
       chapter: '',
       verse: '',
@@ -44,41 +45,88 @@ export default class App extends React.Component {
 
     return (
       <View style={{ flex: 1 }}>
-        <Header
-          leftComponent={{ icon: 'menu', color: '#fff' }}
-          centerComponent={{ text: 'Scripturize', style: { color: '#fff', fontSize: 30 } }}
-          rightComponent={{ icon: 'home', color: '#fff' }}
-          outerContainerStyles={{ width: '100%' }}
-        />
-
-        <View style={styles.container}>
-          {inputs.map((input, index) =>
-            <TextInput
-              key={input.name}
-              style={styles.inputs}
-              placeholder={input.placeholder}
-              onChangeText={(text) => this.setState({ [input.name]: text })}
+        {this.state.viewing ? (
+          <View style={styles.container}>
+            <Header
+              leftComponent={{ icon: 'menu', color: '#fff' }}
+              centerComponent={{ text: 'Scripturize', style: { color: '#fff', fontSize: 30 } }}
+              rightComponent={{ icon: 'home', color: '#fff' }}
+              outerContainerStyles={{ width: '100%' }}
             />
+            {inputs.map((input, index) =>
+              <TextInput
+                key={input.name}
+                style={styles.inputs}
+                placeholder={input.placeholder}
+                onChangeText={(text) => this.setState({ [input.name]: text })}
+              />
+            )}
+
+            <Button
+              title='Search'
+              buttonStyle={{
+                backgroundColor: "rgba(92, 99,216, 1)",
+                width: 300,
+                height: 45,
+                borderColor: "transparent",
+                borderWidth: 0,
+                borderRadius: 5
+              }}
+              onPress={() => {
+                this.makeVerseQuery;
+                this.setState({ viewing: false })
+              }
+              }
+            />
+
+            <Text style={{ padding: 10, fontSize: 42 }}>
+              {this.state.query}
+            </Text>
+
+          </View>
+        ) : (
+            <View style={styles.container}>
+              <Header
+                leftComponent={{ icon: 'menu', color: '#fff' }}
+                centerComponent={{ text: 'Scripturize', style: { color: '#fff', fontSize: 30 } }}
+                rightComponent={{ icon: 'home', color: '#fff' }}
+                outerContainerStyles={{ width: '100%' }}
+              />
+              <Text>Testing</Text>
+
+              <Button
+                title='Test'
+                buttonStyle={{
+                  backgroundColor: "rgba(92, 99,216, 1)",
+                  width: 300,
+                  height: 45,
+                  borderColor: "transparent",
+                  borderWidth: 0,
+                  borderRadius: 5
+                }}
+                onPress={() => {
+                  console.log("Testing Accuracy!");
+                }
+                }
+              />
+
+              <Button
+                title='Back'
+                buttonStyle={{
+                  backgroundColor: "rgba(92, 99,216, 1)",
+                  width: 300,
+                  height: 45,
+                  borderColor: "transparent",
+                  borderWidth: 0,
+                  borderRadius: 5
+                }}
+                onPress={() => {
+                  this.setState({ viewing: true })
+                }
+                }
+              />
+            </View>
           )}
-
-          <Button
-            title='Search'
-            buttonStyle={{
-              backgroundColor: "rgba(92, 99,216, 1)",
-              width: 300,
-              height: 45,
-              borderColor: "transparent",
-              borderWidth: 0,
-              borderRadius: 5
-            }}
-            onPress={this.makeVerseQuery}
-          />
-
-          <Text style={{ padding: 10, fontSize: 42 }}>
-            {this.state.query}
-          </Text>
-
-        </View>
       </View>
     );
   }
@@ -91,10 +139,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  inputs:{
+  inputs: {
     flex: 3,
     width: '75%',
-    borderColor:'#87ceeb',
+    borderColor: '#87ceeb',
     borderWidth: 25,
     textAlign: 'center',
     backgroundColor: '#b8dcec',

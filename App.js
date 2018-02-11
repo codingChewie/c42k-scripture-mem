@@ -85,11 +85,12 @@ export default class App extends React.Component {
                 rightComponent={{ icon: 'home', color: '#fff' }}
                 outerContainerStyles={{ width: '100%'}}
               />
-              <Text>Testing</Text>
+
+              <Text style={styles.textViewUi}>Testing</Text>
 
               <Button
                 title='Test'
-                buttonStyle={styles.buttons}
+                buttonStyle={styles.buttonsViewUi}
                 onPress={() => {
                   console.log("Testing Accuracy!");
                 }
@@ -98,7 +99,7 @@ export default class App extends React.Component {
 
               <Button
                 title='Back'
-                buttonStyle={styles.buttons}
+                buttonStyle={styles.buttonsViewUi}
                 onPress={() => {
                   this.setState({ viewing: true })
                 }
@@ -133,7 +134,7 @@ const styles = StyleSheet.create({
   },
   buttons: {
     backgroundColor: "#5d67d5",
-    flexDirection:'row',
+    flexDirection:'column',
     flexWrap: 'wrap',
     justifyContent:'space-around',
     width: 300,
@@ -142,5 +143,23 @@ const styles = StyleSheet.create({
     borderColor: "transparent",
     borderWidth: 15,
     borderRadius: 5
+  },
+  buttonsViewUi:{
+   backgroundColor: "#5d67d5",
+    flexWrap: 'wrap',
+    width: 300,
+    margin: 75,
+    height: 15,
+    borderColor: "transparent",
+    borderWidth: 5,
+    borderRadius: 5,
+    flexDirection: 'column',
+    justifyContent: 'center',
+        alignItems: 'center',
+  },
+
+  textViewUi:{
+    margin:75
+    
   }
 });

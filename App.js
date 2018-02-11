@@ -64,14 +64,7 @@ export default class App extends React.Component {
 
             <Button
               title='Search'
-              buttonStyle={{
-                backgroundColor: "rgba(92, 99,216, 1)",
-                width: 300,
-                height: 45,
-                borderColor: "transparent",
-                borderWidth: 0,
-                borderRadius: 5
-              }}
+              buttonStyle={styles.buttons}
               onPress={() => {
                 this.makeVerseQuery;
                 this.setState({ viewing: false })
@@ -90,20 +83,13 @@ export default class App extends React.Component {
                 leftComponent={{ icon: 'menu', color: '#fff' }}
                 centerComponent={{ text: 'Scripturize', style: { color: '#fff', fontSize: 30 } }}
                 rightComponent={{ icon: 'home', color: '#fff' }}
-                outerContainerStyles={{ width: '100%' }}
+                outerContainerStyles={{ width: '100%', top:-217}}
               />
               <Text>Testing</Text>
 
               <Button
                 title='Test'
-                buttonStyle={{
-                  backgroundColor: "rgba(92, 99,216, 1)",
-                  width: 300,
-                  height: 45,
-                  borderColor: "transparent",
-                  borderWidth: 0,
-                  borderRadius: 5
-                }}
+                buttonStyle={styles.buttons}
                 onPress={() => {
                   console.log("Testing Accuracy!");
                 }
@@ -112,14 +98,7 @@ export default class App extends React.Component {
 
               <Button
                 title='Back'
-                buttonStyle={{
-                  backgroundColor: "rgba(92, 99,216, 1)",
-                  width: 300,
-                  height: 45,
-                  borderColor: "transparent",
-                  borderWidth: 0,
-                  borderRadius: 5
-                }}
+                buttonStyle={styles.buttons}
                 onPress={() => {
                   this.setState({ viewing: true })
                 }
@@ -142,12 +121,26 @@ const styles = StyleSheet.create({
   inputs: {
     flex: 3,
     width: '75%',
-    borderColor: '#87ceeb',
-    borderWidth: 25,
+    borderColor: 'transparent',
+    borderRadius:5,
+    borderWidth: 5,
+    margin:30,
     textAlign: 'center',
     backgroundColor: '#b8dcec',
     flexDirection: 'column',
     flexWrap: 'wrap',
     justifyContent: 'space-between'
+  },
+  buttons: {
+    backgroundColor: "#5d67d5",
+    flexDirection:'row',
+    flexWrap: 'wrap',
+    justifyContent:'space-around',
+    width: 300,
+    margin: 10,
+    height: 45,
+    borderColor: "transparent",
+    borderWidth: 15,
+    borderRadius: 5
   }
 });

@@ -83,7 +83,7 @@ export default class App extends React.Component {
                 leftComponent={{ icon: 'menu', color: '#fff' }}
                 centerComponent={{ text: 'Scripturize', style: { color: '#fff', fontSize: 30 } }}
                 rightComponent={{ icon: 'home', color: '#fff' }}
-                outerContainerStyles={{ width: '100%', top:-217}}
+                outerContainerStyles={{ width: '100%'}}
               />
               <Text>Testing</Text>
 
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#87ceeb',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
   },
   inputs: {
     flex: 3,

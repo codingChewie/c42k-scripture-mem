@@ -1,3 +1,53 @@
+
+# Scripturize 
+_Built during Code for the Kingdom, Nashville, 2018._
+
+Scripturize is a simple scripture memory application built using React Native and the ESV Bible API. The app allows you to enter a verse that you wish to memorize and then mark your memorization exercise as completed once you have studied the scripture.
+
+## Setup
+* Clone down the project
+* [Use nvm to manage versions of node.](https://github.com/creationix/nvm)
+* Set node version: `nvm install v6`
+* Set default node version `nvm alias default 6.12.3`
+* `npm install` 
+* `npm run ios` (for troubleshooting, see below)
+
+To enable debugging (console.log) from Simulator:
+* Hardware > Shake Gesture > Debug Remote JS
+
+
+## Additional Setup Notes
+The ESV app requires an authentication token. You can register for a key from their website at [https://api.esv.org/v3/docs/](https://api.esv.org/v3/docs/). Once you have your API key, create a new file called `api-config.js` at the root of the project. In the file, copy replacing `KEYGOESHERE` with your key:
+```
+config = {
+
+    api_auth: 'Token KEYGOESHERE'
+
+}
+
+export default config;
+```
+
+## Helpful terminal commands:
+* Install node version 6: `nvm install v6`
+* Set node default: `nvm alias default 6.12.3`
+* Find details: `nvm ls`
+* Creating app with creative: `create-react-native-app appName`
+
+## APIs Experimented:
+* [ESV](https://api.esv.org/)
+* [Labs Bible](http://labs.bible.org/api_web_service): [example](http://labs.bible.org/api/?passage=John%203:16&type=json) 
+* [Bible-API](http://bible-api.com/)
+
+## Contributors
+* [Matthew](https://github.com/codingChewie)
+* [Alex](https://github.com/alexdclark)
+* [Jonathan](https://github.com/jonathanhinton)
+* [Geoff](https://github.com/webbdm)
+* [Abby](https://github.com/abbyfleming)
+
+
+# React Native
 This project was bootstrapped with [Create React Native App](https://github.com/react-community/create-react-native-app).
 
 Below you'll find information about performing common tasks. The most recent version of this guide is available [here](https://github.com/react-community/create-react-native-app/blob/master/react-native-scripts/template/README.md).
@@ -218,19 +268,3 @@ There are a few steps you may want to take to troubleshoot these kinds of errors
 If you're not able to scan the QR code, make sure your phone's camera is focusing correctly, and also make sure that the contrast on the two colors in your terminal is high enough. For example, WebStorm's default themes may [not have enough contrast](https://github.com/react-community/create-react-native-app/issues/49) for terminal QR codes to be scannable with the system barcode scanners that the Expo app uses.
 
 If this causes problems for you, you may want to try changing your terminal's color theme to have more contrast, or running Create React Native App from a different terminal. You can also manually enter the URL printed by the packager script in the Expo app's search bar to load it manually.
-
-
-## APIs Experimented:
-* [ESV](https://api.esv.org/)
-* [Labs Bible](http://labs.bible.org/api_web_service): [example](http://labs.bible.org/api/?passage=John%203:16&type=json) 
-* [Bible-API](http://bible-api.com/)
-
-
-## Terminal issue commands:
-* Install node version 6: `nvm install v6`
-* Set node default: `nvm alias default 6.12.3`
-* Find details: `nvm ls`
-* Creating app with creative: `create-react-native-app appName`
-
-
-

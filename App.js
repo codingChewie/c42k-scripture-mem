@@ -6,6 +6,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import mountain from './img/mountain.jpg';
 
+import { TestVerse } from './components/TestVerse.js';
+
 import config from './api-config';
 import verseRequest from './providers/bibleAPI.js';
 
@@ -25,19 +27,17 @@ export default class App extends React.Component {
   }
 
   makeVerseQuery = () => {
-    //let search = `${this.state.book} ${this.state.chapter} : ${this.state.verse}, ${this.state.translation}`;
-    // format search for bible-api.com
     let search = `${this.state.book} ${this.state.chapter}:${this.state.verse}`
-    console.log('search', search);
-    console.log('config', config.api_auth);
     this.setState({ query: search }, () => verseRequest(this.state.query));
+  }
+
+  setToViewing = () => {
+    this.setState({ viewing: true });
   }
 
   render() {
 
     const inputs = [
-      /*Commenting out translation box for future use
-     { placeholder: "Translation", name: "translation" },*/
       { placeholder: "Book", name: "book" },
       { placeholder: "Chapter", name: "chapter" },
       { placeholder: "Verse", name: "verse" },
@@ -78,34 +78,9 @@ export default class App extends React.Component {
 
           </View>
         ) : (
-            <View style={styles.container}>
-              <Header
-                leftComponent={{ icon: 'menu', color: '#fff' }}
-                centerComponent={{ text: 'Scripturize', style: { color: '#fff', fontSize: 30 } }}
-                rightComponent={{ icon: 'home', color: '#fff' }}
-                outerContainerStyles={{ width: '100%'}}
-              />
-
-              <Text style={styles.textViewUi}>Testing</Text>
-
-              <Button
-                title='Test'
-                buttonStyle={styles.buttonsViewUi}
-                onPress={() => {
-                  console.log("Testing Accuracy!");
-                }
-                }
-              />
-
-              <Button
-                title='Back'
-                buttonStyle={styles.buttonsViewUi}
-                onPress={() => {
-                  this.setState({ viewing: true })
-                }
-                }
-              />
-            </View>
+            <TestVerse
+              toggleViewing={this.setToViewing}
+              queryVerse={this.makeVerseQuery} />
           )}
       </View>
     );
@@ -123,9 +98,9 @@ const styles = StyleSheet.create({
     flex: 3,
     width: '75%',
     borderColor: 'transparent',
-    borderRadius:5,
+    borderRadius: 5,
     borderWidth: 5,
-    margin:30,
+    margin: 30,
     textAlign: 'center',
     backgroundColor: '#b8dcec',
     flexDirection: 'column',
@@ -134,9 +109,9 @@ const styles = StyleSheet.create({
   },
   buttons: {
     backgroundColor: "#5d67d5",
-    flexDirection:'column',
+    flexDirection: 'column',
     flexWrap: 'wrap',
-    justifyContent:'space-around',
+    justifyContent: 'space-around',
     width: 300,
     margin: 10,
     height: 45,
@@ -144,8 +119,8 @@ const styles = StyleSheet.create({
     borderWidth: 15,
     borderRadius: 5
   },
-  buttonsViewUi:{
-   backgroundColor: "#5d67d5",
+  buttonsViewUi: {
+    backgroundColor: "#5d67d5",
     flexWrap: 'wrap',
     width: 300,
     marginVertical: 75,
@@ -158,10 +133,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
 
-  textViewUi:{
-    marginVertical:75,
-    paddingBottom:50,
-    paddingTop:33
-    
+  textViewUi: {
+    marginVertical: 75,
+    paddingBottom: 50,
+    paddingTop: 33
+
   }
 });

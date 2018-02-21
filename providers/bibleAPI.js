@@ -7,17 +7,18 @@ const verseRequest = async (verseParams) => {
             'Authorization': config.api_auth
         }
     })
+    
     const json = await response.json();
     var Canonical = json.canonical;
 
-    if (Canonical != verseParams){
-        console.log("Verse not found did you mean: " + Canonical +"?");
-    }
-    else{
-        console.log("Here is your verse:" + json.Passages[]);
+    let displayData = {
+        verse: json.query,
+        passage: json.passages[0]
     }
 
-    console.log(json);
+    console.log(displayData);
+
+    return displayData;
 }
 
 

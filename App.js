@@ -22,17 +22,34 @@ export default class App extends React.Component {
       book: '',
       chapter: '',
       verse: '',
-      query: ''
+      query: '',
+      testVerse: '',
+      testPassage: '',
+      userText: '',
+      hideReady: false
     };
+  }
+
+  displayResults = (results) =>{
+    results.then((data)=>{
+      console.log(data);
+      this.setState({testVerse: data.verse, testPassage: data.passage})
+    })
+
   }
 
   makeVerseQuery = () => {
     let search = `${this.state.book} ${this.state.chapter}:${this.state.verse}`
-    this.setState({ query: search }, () => verseRequest(this.state.query));
+    this.setState({ query: search }, () => this.displayResults(verseRequest(this.state.query)));
   }
 
   setToViewing = () => {
     this.setState({ viewing: true });
+  }
+
+  handleUserChange = (text) => {
+      this.setState({ userText: text })
+      console.log(text);
   }
 
   render() {
@@ -72,15 +89,16 @@ export default class App extends React.Component {
               }
             />
 
-            <Text style={{ padding: 10, fontSize: 42 }}>
-              {this.state.query}
-            </Text>
-
           </View>
         ) : (
             <TestVerse
               toggleViewing={this.setToViewing}
-              queryVerse={this.makeVerseQuery} />
+              queryVerse={this.makeVerseQuery} 
+              testVerse={this.state.testVerse}
+              testPassage={this.state.testPassage}
+              handleUserChange={this.handleUserChange}
+              loadVerse={this.makeVerseQuery}
+              hideReady={this.state.hideReady}/>
           )}
       </View>
     );
